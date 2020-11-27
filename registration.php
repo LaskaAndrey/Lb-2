@@ -15,7 +15,7 @@ crossorigin=""-->
                 </a>
             </div>
 </div>
-<h1><a  href="index.php" style="position:absolute;top:70px;right:250px">SIGN IN</a></h1>
+<h1><a  href="login_page.php" style="position:absolute;top:70px;right:250px">SIGN IN</a></h1>
 <h1><a  href="registration.php" style="position:absolute;top:70px;right:100px">SIGN UP</a></h1>
 </head>
 <?php session_start(); ?>
@@ -35,6 +35,11 @@ crossorigin=""-->
     <p><label>
         <input type="password" placeholder="Enter Password" name="password">
     </label></p> 
+    <p><select size="2" multiple name="role_id">
+        <option disabled>role</option>
+        <option value="Чебурашка">Чебурашка</option>
+        <option selected value="Крокодил Гена">Крокодил Гена</option>
+    </select></p>
     <input type="submit" value="SIGN UP">
     </div>
 </form>

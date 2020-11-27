@@ -1,6 +1,5 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
-<link rel="stylesheet" href="assets\css\style.css">
+<link rel="stylesheet" href="assets\css\table.css">
 
 <!doctype html>
 <html lang="en">
@@ -15,55 +14,49 @@
         </div>
    </div>
 
-<h1><a  href="index.php" style="position:absolute;top:70px;right:250px">SIGN IN</a></h1>
+<h1><a  href="login_page.php" style="position:absolute;top:70px;right:250px">SIGN IN</a></h1>
 <h1><a  href="registration.php" style="position:absolute;top:70px;right:100px">SIGN UP</a></h1>
 </head>
 
 <?php session_start(); ?>
-<body>
-  
-    <form action="login.php" method="post" class="justify-content-center ">
-    <div
-        class="text-center">
-    <label>
-        <input type="email" placeholder="Enter Login" name="login">
-    </label>
-    <p> 
-    <label>
-        <input type="password" placeholder="Enter Password"name="password">
-    </label>
-    </p>
-    <input type="submit" value="SIGN IN">
-    </div>
-</form>
-    <!--table>
-        <thead>
-          <tr>
-              <th>Name</th>
-              <th>Name</th>
-              <th>Name</th>
-          </tr>
-        </thead>
+<table class="table" >
+    <thead>
+        <th>#</th>
+        <th>First Name</th> 
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Role</th>
+    </thead>
+    <tbody>
+        <?php
+            $servername = "localhost";
+            $username = "root";
+            $password = "";
+            $database = "testdb";
+        
+            $conn = mysqli_connect($servername, $username, $password, $database);
 
-        <tbody>
-          <tr>
-            <td>Alvin</td>
-            <td>Eclair</td>
-            <td>00</td>
-          </tr>
-          <tr>
-            <td>Alan</td>
-            <td>Jellybean</td>
-            <td>00</td>
-          </tr>
-          <tr>
-            <td>Jonathan</td>
-            <td>Lollipop</td>
-            <td>00</td>
-          </tr>
-        </tbody>
-      </table-->
+            $queryUser = "SELECT * FROM users";
+            $resultUser = mysqli_query($conn, $queryUser);
 
+            if($resultUser){
+                while($rowUser = mysqli_fetch_array($resultUser)){
+                    echo "<tr>";
+                        echo "<td>".$rowUser['id']."</td>";
+                        echo "<td>".$rowUser['first_name']."</td>";
+                        echo "<td>".$rowUser['last_name']."</td>";
+                        echo "<td>".$rowUser['login']."</td>";
+
+                        $queryRole = "SELECT title FROM roles WHERE id = '{$rowUser['role_id']}'";
+                        $resultRole = mysqli_query($conn, $queryRole);
+                        $rowRole = mysqli_fetch_array($resultRole);
+                        echo "<td>".$rowRole['title']."</td>";
+                    echo "</tr>";
+                }
+            }
+        ?>
+    </tbody> 
+</table>
 </body>
 
 </html>

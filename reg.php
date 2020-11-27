@@ -11,6 +11,16 @@ if ($conn->connect_error) {
 }
 echo "Connected successfully with db";
 
+// Делаем выборку из таблицы.
+$sql_roles = "SELECT * FROM `roles`";
+$result_select = mysqli_query($conn, $sql_roles);
+
+    echo "<select role>";
+    echo "<option value='0'>Выбор</option>";
+        while($object = mysqli_fetch_object($result_select)){
+echo "<option value = '$object->id' > $object->tittle </option>";}
+    echo "</select>";
+
 $sql = "SELECT * FROM `users`";
 $result = $conn->query($sql);
 
