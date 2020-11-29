@@ -27,6 +27,6 @@
     ?>
     
     <div class="buttons">
-        <button type="button" class="btn btn-secondary" style="position:absolute;top:500px;right:320px"
+        <button type="button" class="btn btn-secondary" style="position:absolute;top:520px;right:320px"
         onClick="document.location='regAdm.php'">ADD USER</button>
     </div>

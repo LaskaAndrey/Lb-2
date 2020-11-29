@@ -69,13 +69,7 @@
         </div>
         <div class="form-group">
             <select class="select-css" name="role_id" id="roleControll"> 
-                <?php if($user['role_id'] == 1): ?>
-                    <option selected value="1">Admin</option>
-                    <option value="2">User</option>
-                <?php elseif($user['role_id'] == 2):?>
-                    <option value="1">Admin</option>
-                    <option selected value="2">User</option>
-                <?php endif; ?>
+                <option selected value="2">User</option>
             </select>
         </div>
         <div class="form-group">
@@ -100,6 +94,4 @@
     </form>
     <button class="btn btn-secondary" onClick = "document.location='../index.php'">TO MAIN PAGE</button>
 </div>
-</div>
-    <script>document.getElementById("roleControll").disabled = true;</script>
 </div>
